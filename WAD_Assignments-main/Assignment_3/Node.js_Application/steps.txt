@@ -1,0 +1,5 @@
+open the project folder in integrated terminal and run following commands :
+    1. npm init --y
+    2. npm i express
+    3. write the code for index.js i.e., main application file
+    4. 

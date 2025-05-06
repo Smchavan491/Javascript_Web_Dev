@@ -1,0 +1,79 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+.heading{
+    background: linear-gradient(135deg, #318aff, #000000);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    color: yellow;
+
+}
+
+.Login-container{
+    max-width: 400px;
+    margin: 20px auto 10px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.Login-container h2{
+    color: #c531ff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    margin-top: 0px;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.form-group input{
+    outline: none;
+    width: 100%;
+    padding: 15px 0px 10px 5px;
+    border-radius: 6px;
+    border: 1px solid pink ;
+    background-color: aliceblue;
+}
+
+button{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    color: rgb(238, 231, 226);
+    font-size: 25px;
+    background: linear-gradient(135deg, #318aff, #000000);
+    transition: 0.5s ease;
+}
+
+button:hover{
+    background: linear-gradient(135deg, #000000, #318aff);
+}
+
+p{
+    margin-top: 8px;
+    text-align: center;
+    cursor: pointer;
+    color: black;
+}
+
+.change{
+    text-decoration: underline;
+}
+
+.change:hover{
+    text-decoration: underline;
+    color: #c531ff;
+}

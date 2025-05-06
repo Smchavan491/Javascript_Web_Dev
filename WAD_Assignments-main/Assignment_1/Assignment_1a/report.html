@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earnings Report</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background: #f7f9fc;
+    }
+
+    .report-container {
+      margin: 20px auto;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+    }
+
+    .chart-container {
+      margin-top: 30px;
+    }
+
+    .profit {
+      color: green;
+      font-weight: bold;
+    }
+
+    .loss {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sidebar">
+    <h3 class="text-center py-3">Admin</h3>
+    <a href="dashboard.html"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+    <a href="report.html"><i class="fas fa-chart-bar"></i> <span>Reports</span></a>
+  </div>
+
+  <div class="content">
+    <div class="container mt-4">
+      <h2>Earnings Report</h2>
+      <div class="report-container">
+
+        <h4>Current Month's Earnings</h4>
+        <div class="d-flex align-items-center justify-content-between">
+          <h5>Earnings for <span id="currentMonth"></span>: <span class="profit" id="currentEarnings"></span></h5>
+          <h5>Comparison with Last Month: <span id="comparisonStatus"></span></h5>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="earningsChart"></canvas>
+        </div>
+
+        <div class="mt-4">
+          <h4>Detailed Earnings Report</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Earnings ($)</th>
+                <th>Difference ($)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="reportTable">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    const earnings = [5000, 7000, 4000, 8000, 12000, 15000]; // Earnings for the past months
+    const months = ['January', 'February', 'March', 'April', 'May', 'June']; // Corresponding months
+
+
+    const currentMonthElement = document.getElementById('currentMonth');
+    const currentEarningsElement = document.getElementById('currentEarnings');
+    const comparisonStatusElement = document.getElementById('comparisonStatus');
+    const reportTable = document.getElementById('reportTable');
+
+    const currentMonth = months[months.length - 1];
+    const currentEarnings = earnings[earnings.length - 1];
+    const lastMonthEarnings = earnings[earnings.length - 2];
+    const diff = currentEarnings - lastMonthEarnings;
+    const status = diff >= 0 ? 'Profit' : 'Loss';
+    const statusClass = diff >= 0 ? 'profit' : 'loss';
+
+    currentMonthElement.textContent = currentMonth;
+    currentEarningsElement.textContent = `$${currentEarnings}`;
+    comparisonStatusElement.innerHTML = `<span class="${statusClass}">${status} of $${Math.abs(diff)}</span>`;
+
+    for (let i = 1; i < earnings.length; i++) {
+      const monthDiff = earnings[i] - earnings[i - 1];
+      const monthStatus = monthDiff >= 0 ? 'Profit' : 'Loss';
+      const monthStatusClass = monthDiff >= 0 ? 'profit' : 'loss';
+
+      reportTable.innerHTML += `
+        <tr>
+          <td>${months[i]}</td>
+          <td>$${earnings[i]}</td>
+          <td class="${monthStatusClass}">$${monthDiff}</td>
+          <td class="${monthStatusClass}">${monthStatus}</td>
+        </tr>
+      `;
+    }
+
+    const ctx = document.getElementById('earningsChart').getContext('2d');
+    const earningsChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: months,
+        datasets: [{
+          label: 'Monthly Earnings ($)',
+          data: earnings,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4 
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Months'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Earnings ($)'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

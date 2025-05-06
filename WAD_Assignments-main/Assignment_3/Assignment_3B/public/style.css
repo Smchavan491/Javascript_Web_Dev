@@ -1,0 +1,30 @@
+body {
+    font-family: sans-serif;
+    padding: 2rem;
+    background-color: #f5f5f5;
+  }
+  
+  form {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  input, button {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  #students-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .student {
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Admin Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="sidebar">
+    <h3 class="text-center py-3">Admin</h3>
+    <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
+    <a href="#"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+    <a href="#"><i class="fas fa-users"></i> <span>Users</span></a>
+    <a href="#"><i class="fas fa-box"></i> <span>Orders</span></a>
+    <a href="report.html"><i class="fas fa-chart-bar"></i> <span>Reports</span></a>    <a href="#"><i class="fas fa-cogs"></i> <span>Settings</span></a>
+    <a href="#"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+  </div>
+
+  <div class="content">
+    <h2>Dashboard Overview</h2>
+    <div class="row mb-4">
+
+      <div class="col-md-3 mb-4">
+        <div class="card text-center">
+          <div class="card-header">
+            Total Users
+          </div>
+          <div class="card-body">
+            <i class="fas fa-users"></i>
+            <h3 id="userCount">1,245</h3>
+            <p>Active Users</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card text-center">
+          <div class="card-header">
+            Orders
+          </div>
+          <div class="card-body">
+            <i class="fas fa-shopping-cart"></i>
+            <h3 id="orderCount">540</h3>
+            <p>Pending Orders</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card text-center">
+          <div class="card-header">
+            Earnings
+          </div>
+          <div class="card-body">
+            <i class="fas fa-dollar-sign"></i>
+            <h3>$12,340</h3>
+            <p>Revenue this month</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card text-center">
+          <div class="card-header">
+            Feedback
+          </div>
+          <div class="card-body">
+            <i class="fas fa-comments"></i>
+            <h3>150</h3>
+            <p>New Feedbacks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="dashboardChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      const content = document.querySelector('.content');
+      if (sidebar.style.width === '200px' || !sidebar.style.width) {
+        sidebar.style.width = '60px';
+        content.style.marginLeft = '60px';
+      } else {
+        sidebar.style.width = '200px';
+        content.style.marginLeft = '250px';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctx = document.getElementById('dashboardChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar', 
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [
+            {
+              label: 'Earnings ($)',
+              data: [5000, 7000, 4000, 8000, 12000, 15000],
+              borderColor: '#1abc9c',
+              backgroundColor: 'rgba(26, 188, 156, 0.3)',
+              fill: true,
+              tension: 0.4,
+            },
+            {
+              label: 'Orders',
+              data: [200, 300, 250, 400, 600, 800],
+              borderColor: '#3498db',
+              backgroundColor: 'rgba(52, 152, 219, 0.3)',
+              fill: true,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                label: (tooltipItem) => `${tooltipItem.dataset.label}: ${tooltipItem.raw}`,
+              },
+            },
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Months',
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Values',
+              },
+            },
+          },
+        },
+      });
+    });
+  </script>
+</body>
+
+</html>
