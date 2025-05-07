@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Simple jQuery Mobile Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- jQuery Mobile CSS -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+  <!-- jQuery + jQuery Mobile JS -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <style>
+    body{
+        background: yellowgreen !important;
+    }
+   .custom-btn {
+      background: #eb0492 !important;
+      color: black !important;
+    }
+    
+  </style>
+</head>
+<body>
+    <!-- Home -->
+     <!-- Header -->
+    <div data-role="page" id = "home">
+        <div data-role = "header">
+            <h1>Welcome</h1>
+        </div>
+        <!-- Content -->
+        <div data-role = "content">
+            <p>This is the mobile website using JQuery</p>
+            <a href="#about" class="ui-btn custom-btn">Go to about</a>
+        </div>
+        <!-- Footer -->
+        <div data-role = "footer">
+            <h2>End</h2>
+        </div>
+    </div>
+
+    <!-- //about page -->
+    <div data-role = "page" id = "about">
+        <div data-role = "header">
+            <h1>About</h1>
+        </div>
+        <!-- Content -->
+        <div data-role="content">
+            <p>Welcome to about section</p>
+            <p>Here is a list of fruits:</p>
+            <ul data-role="listview" data-inset="true" id="fruitList">
+                <li><strong>Apple</strong> <span class="fruit-color">- Red</span></li>
+                <li><strong>Banana</strong> <span class="fruit-color">- Yellow</span></li>
+                <li><strong>Grapes</strong> <span class="fruit-color">- Purple</span></li>
+                <li><strong>Orange</strong> <span class="fruit-color">- Orange</span></li>
+            </ul>
+            <a href="#home" class="ui-btn custom-btn">Back to Home</a>
+        </div>
+        <!-- Footer -->
+         <div data-role="footer">
+            <h2>End of about section</h2>
+         </div>
+    </div>
+
+</body>
+</html>
