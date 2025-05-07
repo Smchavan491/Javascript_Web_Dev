@@ -1,0 +1,18 @@
+<h2>Registration</h2>
+
+<form>
+    <div>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+
+    <button type="button" (click)="onLogin()">Login</button>
+    <p>Already have an account <a routerLink="home">Login</a>
+    <router-outlet></router-outlet>
+    </p>
+
+</form>
