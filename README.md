@@ -26,6 +26,32 @@ ng generate component component_name --no-standalone
 ### 5. Start the development server
 ng serve
 
+---
+# Backend Setup for CURD Operations
+---
+
+### 1. Creates package.json
+npm init -y
+
+### 2. To install three npm packages
+npm install express mongoose dotenv
+
+### 3. To run the code
+node server.js
+
+---
+# jQuery Mobile CDN
+---
+
+### jQuery core (required before jQuery Mobile) 
+### <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+### jQuery Mobile JS
+### <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+### jQuery Mobile CSS
+### <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
 
 
 
