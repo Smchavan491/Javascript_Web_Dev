@@ -1,0 +1,32 @@
+Step 1: Git Setup (only once per system)
+Set your Git username and email:
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+
+verify with:
+git config --list
+
+Step 2: Initialize a Local Repo
+Navigate to your project folder:
+cd path/to/your/project
+
+Initialize Git:
+git init
+
+Step 3: Add and Commit Files
+git add .
+git commit -m "Initial commit"
+
+Step 6: Connect Local to GitHub
+git remote add origin https://github.com/yourusername/your-repo-name.git
+
+Step 7: Push to GitHub
+git branch -M main
+git push -u origin main
+
+
+git pull origin main --rebase
+
+
+
+
