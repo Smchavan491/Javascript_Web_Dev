@@ -1,10 +1,13 @@
 Step 1: Git Setup (only once per system)
 Set your Git username and email:
-git config --global user.name "Your Name"
-git config --global user.email "youremail@example.com"
+git config user.name "Sami"
+git config user.email "sami@project.com"
+
 
 verify with:
 git config --list
+git config --local --list
+
 
 Step 2: Initialize a Local Repo
 Navigate to your project folder:
